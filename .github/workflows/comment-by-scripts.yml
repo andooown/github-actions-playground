@@ -9,9 +9,8 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            console.log(context.payload)
             github.rest.issues.createComment({
-              issue_number: context.issue.number,
+              issue_number: context.payload.number,
               owner: "someone",
               repo: context.repo.repo,
               body: 'Test Comment'
