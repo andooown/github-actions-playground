@@ -11,9 +11,9 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            github.rest.pulls.createReviewComment({
-              owner: "someone",
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
               repo: context.repo.repo,
-              pull_number: context.payload.number,
-              body: "Test Comment"
-            });
+              body: 'Test Comment'
+            })
