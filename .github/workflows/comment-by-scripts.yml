@@ -1,3 +1,5 @@
+name: Comment by github-script
+
 on:
   pull_request:
 
@@ -9,7 +11,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            octokit.rest.pulls.createReviewComment({
+            github.rest.pulls.createReviewComment({
               owner: "someone",
               repo: context.repo.repo,
               pull_number: context.payload.number,
